@@ -1,7 +1,7 @@
 {
-  "name": "@medusajs-ismac/announcement-bar-plugin",
+  "name": "medusa-plugin-announcement-bar",
   "version": "0.1.0",
-  "description": "A starter for Medusa plugins.",
+  "description": "Announcement Bar plugin for Medusa.",
   "author": "Ismael Flores",
   "license": "MIT",
   "files": [
