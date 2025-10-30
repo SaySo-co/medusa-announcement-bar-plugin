@@ -1,0 +1,84 @@
+{
+  "$schema": "https://biomejs.dev/schemas/2.3.2/schema.json",
+  "assist": { "actions": { "source": { "organizeImports": "on" } } },
+  "linter": {
+    "enabled": true,
+    "rules": {
+      "recommended": true,
+      "suspicious": {
+        "noConsole": { "level": "error", "options": { "allow": ["log"] } }
+      },
+      "correctness": {
+        "noUnusedImports": "error"
+      }
+    }
+  },
+  "overrides": [
+    {
+      "includes": ["**/src/**"],
+      "javascript": {
+        "parser": {
+          "unsafeParameterDecoratorsEnabled": true
+        }
+      },
+      "linter": {
+        "rules": {
+          "suspicious": {
+            "noArrayIndexKey": "off"
+          },
+          "recommended": true,
+          "correctness": {
+            "useExhaustiveDependencies": "off"
+          }
+        }
+      }
+    }
+  ],
+  "files": {
+    "includes": [
+      "**",
+      "!**/coverage",
+      "!**/package.json",
+      "!**/.cache",
+      "!**/.turbo",
+      "!**/.vercel",
+      "!**/build",
+      "!**/dist",
+      "!**/ignore",
+      "!**/.medusa",
+      "!**/out",
+      "!**/src/public",
+      "!**/src/node_modules",
+      "!**/src/.medusa",
+      "!**/.react-router",
+      "!**/turbo.json"
+    ]
+  },
+  "formatter": {
+    "enabled": true,
+    "formatWithErrors": false,
+    "includes": ["**"],
+    "attributePosition": "auto",
+    "indentStyle": "space",
+    "indentWidth": 2,
+    "lineWidth": 120,
+    "lineEnding": "lf"
+  },
+  "javascript": {
+    "formatter": {
+      "quoteStyle": "single",
+      "arrowParentheses": "always",
+      "bracketSameLine": false,
+      "bracketSpacing": true,
+      "jsxQuoteStyle": "double",
+      "quoteProperties": "asNeeded",
+      "semicolons": "always",
+      "trailingCommas": "all"
+    }
+  },
+  "json": {
+    "formatter": {
+      "trailingCommas": "none"
+    }
+  }
+}
