@@ -1,11 +1,14 @@
 {
   "name": "@sayso-co/medusa-plugin-announcement-bar",
-  "version": "0.1.0",
+  "version": "1.0.0",
   "description": "Announcement Bar plugin for Medusa.",
+  "main": "dist/index.js",
+  "publishConfig": { "registry": "https://npm.pkg.github.com" },
   "author": "Ismael Flores",
   "license": "MIT",
   "files": [
-    ".medusa/server"
+    ".medusa/server",
+    "dist"
   ],
   "exports": {
     "./package.json": "./package.json",
