@@ -1,5 +1,5 @@
 {
-  "name": "medusa-plugin-announcement-bar",
+  "name": "@sayso-co/medusa-plugin-announcement-bar",
   "version": "0.1.0",
   "description": "Announcement Bar plugin for Medusa.",
   "author": "Ismael Flores",

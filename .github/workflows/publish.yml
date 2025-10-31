@@ -1,23 +1,41 @@
-name: Publish package
+name: Publish package (Yarn Berry)
+
 on:
+  workflow_dispatch:
   push:
     tags:
-      - 'v*.*.*'   # publish on version tags
+      - 'v*.*.*'
+
 jobs:
   publish:
     runs-on: ubuntu-latest
     permissions:
       contents: read
-      packages: write   # <-- allows publish with GITHUB_TOKEN
+      packages: write
     steps:
       - uses: actions/checkout@v4
+
       - uses: actions/setup-node@v4
         with:
           node-version: '20'
-          registry-url: 'https://npm.pkg.github.com'
-          scope: '@your-org'
-      - run: npm ci
-      - run: npm run build
-      - run: npm publish --access public
+
+      # Cache Yarn Berry artifacts for speed
+      - uses: actions/cache@v4
+        with:
+          path: |
+            .yarn/cache
+            .yarn/unplugged
+            .yarn/build-state.yml
+            .pnp.cjs
+            **/node_modules
+          key: ${{ runner.os }}-yarn-${{ hashFiles('**/yarn.lock') }}
+          restore-keys: |
+            ${{ runner.os }}-yarn-
+
+      - run: yarn install --immutable
+      - run: yarn build        # if you have a build step
+
+      # Yarn Berry has an npm plugin; this publishes to GitHub Packages
+      - run: yarn npm publish --access public --tolerate-republish
         env:
           NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
